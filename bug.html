@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text will be replaced.
+  </div>
+
+  <script>
+    // Incorrect use of innerHTML with an element that contains an event listener
+    document.getElementById("myDiv").addEventListener("click", function() {
+      alert("Div clicked!");
+    });
+
+    document.getElementById("myDiv").innerHTML = "<p>This text replaces the original.</p><button onclick="alert('Button clicked!')">Click me</button>";
+  </script>
+</body>
+</html>
