@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text will be replaced.
+  </div>
+
+  <script>
+    const myDiv = document.getElementById("myDiv");
+    myDiv.addEventListener("click", function() {
+      alert("Div clicked!");
+    });
+
+    // Correct approach: Detach and reattach the event listener after replacing innerHTML
+    const originalListener = myDiv.onclick;
+    myDiv.innerHTML = "<p>This text replaces the original.</p><button onclick="alert('Button clicked!')">Click me</button>";
+    myDiv.onclick = originalListener; 
+  </script>
+</body>
+</html>
